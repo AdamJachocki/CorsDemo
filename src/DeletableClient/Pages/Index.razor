@@ -1,0 +1,50 @@
+﻿@page "/"
+@inherits IndexPage
+
+<PageTitle>Prognoza pogody</PageTitle>
+<h1>Mogę DELETE</h1>
+
+<div class="row">
+    @if (!string.IsNullOrWhiteSpace(ErrorMsg))
+    {
+        <div class="alert bg-danger text-light">
+            @ErrorMsg
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-4">
+        @if (WeatherData.Count == 0)
+        {
+            <button class="btn btn-primary" @onclick="GetWeatherClickHandler">Pobierz dane</button>
+        }
+        else
+        {
+            <WeatherViewer Data="WeatherData" />
+        }
+    </div>
+
+    <div class="col-4">
+        <button class="btn btn-info" @onclick="PostHandler">Wywołaj POST</button>
+
+        @if(!string.IsNullOrEmpty(Info))
+        {
+            <div>
+                @Info
+            </div>
+        }
+    </div>
+
+    <div class="col-4">
+        <button class="btn btn-danger" @onclick="DeleteHandler">Wywołaj DELETE</button>
+        @if (!string.IsNullOrEmpty(Info))
+        {
+            <div>
+                @Info
+            </div>
+        }
+    </div>
+</div>
+
+

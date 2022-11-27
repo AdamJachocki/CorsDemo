@@ -1,0 +1,34 @@
+﻿@using Models;
+
+<div>
+    <h2>Prognoza pogody</h2>
+    <hr />
+
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Temperatura (C)</th>
+                <th>Temperatura (F)</th>
+                <th>Podsumowanie</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Data)
+            {
+                <tr>
+                    <td>@item.Date</td>
+                    <td>@item.TemperatureC</td>
+                    <td>@item.TemperatureF</td>
+                    <td>@item.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code{
+    [Parameter, EditorRequired]
+    public IEnumerable<WeatherForecast> Data { get; set; }
+
+}
